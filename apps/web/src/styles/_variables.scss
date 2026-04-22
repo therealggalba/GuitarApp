@@ -1,0 +1,28 @@
+// Color Palette - Premium Dark Mode Focus
+$primary: #ff4d00;      // Vibrant Guitar Pick Orange
+$primary-dark: #cc3d00;
+$secondary: #1a1a1a;    // Deep Charcoal
+$background: #0a0a0a;   // Pure Black
+$surface: #121212;      // Elevated Dark surface
+$text-main: #ffffff;
+$text-secondary: #a0a0a0;
+$accent: #00e5ff;       // Neon Blue accents for tech feel
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 32px;
+$spacing-xl: 64px;
+
+// Typography
+$font-family: 'Inter', system-ui, -apple-system, sans-serif;
+$font-size-base: 16px;
+
+// Breakpoints
+$tablet: 768px;
+$desktop: 1024px;
+
+// Effects
+$shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.5);
+$transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

@@ -1,0 +1,50 @@
+@use 'variables' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  background-color: $background;
+  color: $text-main;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: $primary;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: $transition-smooth;
+  
+  &:hover {
+    color: $primary;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+  background-color: $primary;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-smooth;
+  
+  &:hover {
+    transform: translateY(-2px);
+    background-color: $primary-dark;
+    box-shadow: 0 8px 25px rgba($primary, 0.4);
+  }
+}

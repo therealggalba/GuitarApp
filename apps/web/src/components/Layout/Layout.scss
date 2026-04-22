@@ -1,0 +1,60 @@
+@use '../../styles/variables' as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  .header {
+    height: 70px;
+    padding: 0 $spacing-lg;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba($surface, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba($primary, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: $primary;
+    }
+    
+    .lang-toggle {
+      background: none;
+      border: 1px solid rgba($text-secondary, 0.3);
+      color: $text-secondary;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: $transition-smooth;
+      
+      &:hover {
+        border-color: $primary;
+        color: $white;
+      }
+    }
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: $spacing-xl $spacing-lg;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .footer {
+    padding: $spacing-lg;
+    text-align: center;
+    font-size: 0.9rem;
+    color: $text-secondary;
+    border-top: 1px solid rgba($surface, 0.5);
+  }
+}
