@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *;
+
+.chord-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--chord-color);
+  background: rgba(0, 0, 0, 0.8);
+  transition: all 0.2s ease;
+  z-index: 10;
+  
+  &.active {
+    transform: scale(1.15);
+    background: var(--chord-color);
+    
+    .chord-name {
+      color: #000;
+      font-weight: 900;
+    }
+  }
+
+  .chord-name {
+    color: var(--chord-color);
+    font-size: 0.85rem;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.5px;
+  }
+}

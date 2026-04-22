@@ -36,7 +36,11 @@ const SongDetailPage: React.FC = () => {
       <div className="song-body">
         {song.lyricsUrl && (
           <div className="lyrics-section" style={{ marginTop: '48px' }}>
-            <KaraokeDisplay url={song.lyricsUrl} currentTime={currentTime} />
+            <KaraokeDisplay 
+              url={song.lyricsUrl} 
+              chordsUrl={song.lyricsUrl.replace('lyrics.txt', 'chords.txt')}
+              currentTime={currentTime} 
+            />
           </div>
         )}
       </div>

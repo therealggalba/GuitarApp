@@ -24,6 +24,31 @@
     
     .back-btn { background: rgba($white, 0.05); color: $text-secondary; }
     .save-btn { background: $primary; color: white; border: none; }
+
+    .mode-selector {
+      display: flex;
+      background: rgba($white, 0.05);
+      padding: 4px;
+      border-radius: 6px;
+      gap: 12px;
+
+      .mode-btn {
+        padding: 8px 20px;
+        border-radius: 4px;
+        border: none;
+        background: transparent;
+        color: $text-secondary;
+        cursor: pointer;
+        font-weight: 600;
+        transition: $transition-smooth;
+
+        &.active {
+          background: $surface;
+          color: $primary;
+          box-shadow: $shadow-soft;
+        }
+      }
+    }
   }
 }
 
@@ -39,16 +64,26 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-xl;
+  overflow-y: auto;
+  padding-right: $spacing-sm; // Space for scrollbar
   
   .current-capture {
-    background: #1a1a1a;
-    border: 1px solid $secondary;
+    background: #101010;
+    border: 1px solid rgba($primary, 0.2);
     padding: $spacing-xl;
     border-radius: 8px;
     text-align: center;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
     
-    .time-label { font-size: 0.7srem; color: $text-secondary; letter-spacing: 2px; }
-    .large-time { font-size: 4rem; font-weight: 800; color: $accent; font-family: monospace; margin: $spacing-md 0; }
+    .time-label { font-size: 0.7rem; color: $text-secondary; letter-spacing: 2px; }
+    .large-time { 
+      font-size: clamp(2rem, 8vw, 4rem); 
+      font-weight: 800; 
+      color: $accent; 
+      font-family: monospace; 
+      margin: $spacing-md 0; 
+      text-shadow: 0 0 10px rgba($accent, 0.3); 
+    }
     
     .insert-btn {
       width: 100%;
@@ -64,6 +99,34 @@
       &:disabled { opacity: 0.3; cursor: not-allowed; }
       &:hover:not(:disabled) { transform: scale(1.02); background: $primary-dark; }
     }
+
+    .chord-pad {
+      text-align: left;
+      .pad-title { font-size: 0.7rem; color: $text-secondary; margin-bottom: $spacing-md; letter-spacing: 1px; }
+      
+      .chord-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: $spacing-md;
+        
+        .chord-pad-btn {
+          height: 50px;
+          border-radius: 4px;
+          border: 2px solid var(--c-color);
+          background: rgba(0,0,0,0.4);
+          color: var(--c-color);
+          font-weight: 800;
+          cursor: pointer;
+          transition: all 0.2s;
+          
+          &:hover {
+            background: var(--c-color);
+            color: black;
+            box-shadow: 0 0 15px var(--c-color);
+          }
+        }
+      }
+    }
   }
 }
 
@@ -72,44 +135,69 @@
   border: 1px solid rgba($white, 0.05);
   border-radius: 8px;
   overflow-y: auto;
-  padding: $spacing-md;
+  padding: $spacing-lg;
+
+  .list-title { font-size: 0.7rem; color: $primary; letter-spacing: 2px; margin-bottom: $spacing-md; font-weight: bold; }
 
   .lyrics-list {
     display: flex;
     flex-direction: column;
     gap: 4px;
-  }
-  
-  .sync-row {
-    display: grid;
-    grid-template-columns: 40px 100px 1fr;
-    gap: $spacing-md;
-    padding: $spacing-md;
-    border-radius: 4px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: $transition-smooth;
-    
-    &:hover { background: rgba($white, 0.02); }
-    
-    &.selected {
-      background: rgba($primary, 0.1);
-      border-color: rgba($primary, 0.3);
-      
-      .line-num { color: $primary; }
-      .line-time { color: $white; font-weight: bold; }
-      .line-text { color: $white; }
-    }
-    
-    .line-num { color: $text-secondary; font-size: 0.8rem; font-family: monospace; }
-    .line-time { color: $accent; font-family: monospace; }
-    .line-text { color: $text-secondary; }
-  }
-}
 
-.sync-status {
-  padding: $spacing-xl;
-  text-align: center;
-  color: $primary;
-  font-weight: bold;
+    .sync-row {
+      display: grid;
+      grid-template-columns: 40px 100px 1fr;
+      gap: $spacing-md;
+      padding: $spacing-md;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: $transition-smooth;
+      
+      &:hover { background: rgba($white, 0.02); }
+      
+      &.selected {
+        background: rgba($primary, 0.1);
+        border-color: rgba($primary, 0.3);
+        .line-num { color: $primary; }
+        .line-time { color: $white; font-weight: bold; }
+        .line-text { color: $white; }
+      }
+      
+      .line-num { color: $text-secondary; font-size: 0.8rem; font-family: monospace; }
+      .line-time { color: $accent; font-family: monospace; }
+      .line-text { color: $text-secondary; }
+    }
+  }
+
+  .chords-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    .chord-row {
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+      padding: $spacing-md;
+      background: rgba($white, 0.03);
+      border-radius: 4px;
+      border-left: 4px solid #444;
+      
+      .c-time { font-family: monospace; color: $text-secondary; font-size: 0.9rem; }
+      .c-name { font-weight: 800; min-width: 60px; font-size: 1.1rem; }
+      
+      .del-btn {
+        margin-left: auto;
+        background: transparent;
+        border: none;
+        color: rgba($white, 0.2);
+        cursor: pointer;
+        padding: 4px 10px;
+        font-size: 1.5rem;
+        border-radius: 4px;
+        &:hover { color: #f44336; background: rgba(#f44336, 0.1); }
+      }
+    }
+  }
 }
