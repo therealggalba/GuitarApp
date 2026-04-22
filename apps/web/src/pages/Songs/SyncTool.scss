@@ -3,8 +3,13 @@
 .sync-page {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
-  padding: $spacing-lg;
+  min-height: 100dvh;
+  padding: $spacing-md;
+
+  @media (max-width: $tablet) {
+    padding: $spacing-sm;
+    height: auto;
+  }
   
   .sync-header {
     display: flex;
@@ -58,6 +63,13 @@
   gap: $spacing-xl;
   flex: 1;
   overflow: hidden;
+
+  @media (max-width: $tablet) {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    gap: $spacing-lg;
+  }
 }
 
 .player-pane {
@@ -83,6 +95,10 @@
       font-family: monospace; 
       margin: $spacing-md 0; 
       text-shadow: 0 0 10px rgba($accent, 0.3); 
+
+      @media (max-width: $tablet) {
+        font-size: 2.5rem;
+      }
     }
     
     .insert-btn {
