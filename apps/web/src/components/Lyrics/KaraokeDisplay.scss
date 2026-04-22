@@ -1,0 +1,69 @@
+@use '../../styles/variables' as *;
+
+.karaoke-container {
+  background: rgba($surface, 0.6);
+  border-radius: 12px;
+  padding: $spacing-xl $spacing-lg;
+  border: 2px solid rgba($primary, 0.1);
+  text-align: center;
+  overflow: hidden;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+
+  &::before {
+    content: "KARAOKE SYSTEM v1.0";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.6rem;
+    color: rgba($primary, 0.4);
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+}
+
+.karaoke-viewport {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  transition: all 0.5s ease;
+  width: 100%;
+
+  .line {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 1.5em;
+    
+    &.previous {
+      font-size: 1.2rem;
+      opacity: 0.2;
+      transform: scale(0.9);
+      filter: blur(1px);
+    }
+
+    &.active {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: $text-main;
+      text-shadow: 0 0 15px rgba($primary, 0.4);
+      transform: scale(1.1);
+      
+      &::selection { background: $primary; }
+    }
+
+    &.next {
+      font-size: 1.2rem;
+      opacity: 0.4;
+      transform: scale(0.95);
+    }
+  }
+}
+
+.karaoke-status {
+  color: $text-secondary;
+  font-style: italic;
+  font-size: 0.9rem;
+}

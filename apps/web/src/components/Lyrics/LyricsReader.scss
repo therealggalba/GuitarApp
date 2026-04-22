@@ -1,0 +1,36 @@
+@use '../../styles/variables' as *;
+
+.lyrics-reader {
+  background: rgba($surface, 0.4);
+  border-radius: 8px;
+  padding: $spacing-lg;
+  border: 1px solid rgba($white, 0.05);
+
+  .lyrics-header {
+    font-size: 0.8rem;
+    color: $primary;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: $spacing-md;
+    border-bottom: 1px solid rgba($primary, 0.2);
+    padding-bottom: $spacing-sm;
+  }
+
+  .lyrics-content {
+    font-family: inherit;
+    white-space: pre-wrap;
+    color: $text-secondary;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    font-style: italic;
+  }
+}
+
+.lyrics-status {
+  padding: $spacing-lg;
+  text-align: center;
+  color: $text-secondary;
+  font-style: italic;
+  
+  &.error { color: #f44336; }
+}

@@ -1,0 +1,115 @@
+@use '../../styles/variables' as *;
+
+.sync-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px);
+  padding: $spacing-lg;
+  
+  .sync-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+    
+    h1 { font-size: 1.5rem; color: $white; }
+    
+    .back-btn, .save-btn {
+      padding: $spacing-sm $spacing-md;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      border: 1px solid rgba($white, 0.1);
+    }
+    
+    .back-btn { background: rgba($white, 0.05); color: $text-secondary; }
+    .save-btn { background: $primary; color: white; border: none; }
+  }
+}
+
+.sync-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: $spacing-xl;
+  flex: 1;
+  overflow: hidden;
+}
+
+.player-pane {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+  
+  .current-capture {
+    background: #1a1a1a;
+    border: 1px solid $secondary;
+    padding: $spacing-xl;
+    border-radius: 8px;
+    text-align: center;
+    
+    .time-label { font-size: 0.7srem; color: $text-secondary; letter-spacing: 2px; }
+    .large-time { font-size: 4rem; font-weight: 800; color: $accent; font-family: monospace; margin: $spacing-md 0; }
+    
+    .insert-btn {
+      width: 100%;
+      padding: $spacing-lg;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: $primary;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      
+      &:disabled { opacity: 0.3; cursor: not-allowed; }
+      &:hover:not(:disabled) { transform: scale(1.02); background: $primary-dark; }
+    }
+  }
+}
+
+.lyrics-pane {
+  background: rgba($surface, 0.5);
+  border: 1px solid rgba($white, 0.05);
+  border-radius: 8px;
+  overflow-y: auto;
+  padding: $spacing-md;
+
+  .lyrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .sync-row {
+    display: grid;
+    grid-template-columns: 40px 100px 1fr;
+    gap: $spacing-md;
+    padding: $spacing-md;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: $transition-smooth;
+    
+    &:hover { background: rgba($white, 0.02); }
+    
+    &.selected {
+      background: rgba($primary, 0.1);
+      border-color: rgba($primary, 0.3);
+      
+      .line-num { color: $primary; }
+      .line-time { color: $white; font-weight: bold; }
+      .line-text { color: $white; }
+    }
+    
+    .line-num { color: $text-secondary; font-size: 0.8rem; font-family: monospace; }
+    .line-time { color: $accent; font-family: monospace; }
+    .line-text { color: $text-secondary; }
+  }
+}
+
+.sync-status {
+  padding: $spacing-xl;
+  text-align: center;
+  color: $primary;
+  font-weight: bold;
+}
